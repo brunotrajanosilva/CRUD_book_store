@@ -13,3 +13,9 @@ class OrderViewSet(viewsets.ModelViewSet):
 class BookViewSet(viewsets.ModelViewSet):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
+
+
+from django.shortcuts import render
+
+def indexView(request):
+    return render(request, 'index.html')
