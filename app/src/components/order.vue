@@ -72,7 +72,7 @@ export default {
             let book = this.book_prop;
 
             let result = book.filter(x=> arr.some(y=> y == x.id) );
-            return result;    
+            return result;
         },
     }
 }
