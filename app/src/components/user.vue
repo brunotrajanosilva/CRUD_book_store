@@ -35,7 +35,6 @@ export default{
     mixins: [mixin],
     mounted(){
         this.getData();
-        this.getBook();
     },
     data(){
         return {

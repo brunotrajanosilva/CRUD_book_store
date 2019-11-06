@@ -10,6 +10,6 @@ router.register(r'order', OrderViewSet)
 router.register(r'book', BookViewSet)
 
 urlpatterns = [
-    path('', include(router.urls)),
-    path('index', views.indexView, name="index")
+    path('api/', include(router.urls)),
+    path('', views.indexView, name="index")
 ]
