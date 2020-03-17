@@ -17,5 +17,8 @@ class BookViewSet(viewsets.ModelViewSet):
 
 from django.shortcuts import render
 
-def indexView(request):
-    return render(request, 'index.html')
+def IndexView(request):
+    return render(request, 'orders.html')
+
+def BooksView(request):
+    return render(request, 'books.html')

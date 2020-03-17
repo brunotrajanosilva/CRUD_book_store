@@ -1,29 +1,37 @@
 <template>
 <div>
     <div v-if="modal == 0">
-        <div class="d-flex">
-            <h3>usuário: </h3>
-            <button class="btn btn-primary ml-2 mb-2" @click="inputData = {name: ''};
-            modal = 1">adicionar</button>
+        <div>
+            <h1>Users</h1>
+            <button class="btn btn-primary mb-2" @click="inputData = {name: ''};
+            modal = 1">add</button>
         </div>
 
-        <div class="d-flex mb-2">
-            <select name="" id="" v-model="select" class="form-control mr-2">
-                <option v-for="val in data" :value="val" :key="val.id">{{val.name}}</option>
-            </select>
-            <button class="btn btn-primary mr-2" @click="inputData = select; modal = 2">editar</button>
-            <button class="btn btn-outline-primary" @click="deleteData(select.id)">deletar</button>
+        <div class="form-inline mb-2">
+            <label v-for="val in data" :key="val.id" class="form-check-label mr-3">
+                <input type="radio" v-model="select" class="form-check-input "
+                name="user" :value="val"><span>{{val.name}}</span>
+            </label>
+
+            <button class="btn btn-primary mr-2" @click="inputData = select; modal = 2">edit</button>
+            <button class="btn btn-outline-primary" @click="deleteData(select.id)">remove</button>
         </div>
         
-        <order v-if="select.id" class="p-5" :filter_id="select.id" :book_prop="book"></order>
+        <order v-if="select.id" class="p-5" :filter_id="select.id" :book_prop="book" :key="select.id"></order>
     </div>
     
-    <div v-else class="d-flex">
-        <input type="text" class="mr-2" v-model="inputData.name">
+    <!-- user edit menu -->
+    <div v-else >
+        <div class="form-group">
+            <label for="user_name">Name</label>
+            <input type="text" class="form-control mr-2" v-model="inputData.name">
+        </div>
+
         <button class="btn btn-primary mr-2" v-if="modal == 1" @click="addData()">ok</button>
         <button class="btn btn-primary mr-2" v-if="modal == 2" @click="updateData(select.id)">ok</button>
-        <button class="btn btn-outline-primary mr-2" @click="modal=0">cancelar</button>
+        <button class="btn btn-outline-primary mr-2" @click="modal=0">cancel</button>
     </div>
+
 </div>
 </template>
 <script>

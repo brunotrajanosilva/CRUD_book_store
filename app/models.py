@@ -2,23 +2,17 @@ from django.db import models
 import uuid
 
 
-# class TimeStamp(models.Model):
-#     created_at = models.DateTimeField(auto_now_add=True)
-#     updated_at = models.DateTimeField(auto_now=True)
-
-#     class Meta:
-#         abstract = True
 
 class User(models.Model):
     name = models.CharField(max_length=50)
 
 class Book(models.Model):
     name = models.CharField(max_length=50)
-    pages = models.IntegerField()
+    author = models.CharField(max_length=50, blank="true", null="true")
     price = models.DecimalField(max_digits=5, decimal_places=2)
 
     def __str__(self):
-        return '%s' % (self.name)
+        return f'{self.name}'
 
 class Order(models.Model):
     order_id = models.UUIDField(default=uuid.uuid4, editable=False)
